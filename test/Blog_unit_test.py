@@ -32,6 +32,8 @@ class BlogTest(unittest.TestCase):
         delete_blog.click()
         confirm_delete = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div[4]/form/div/input[2]')))
         confirm_delete.click()
+        bodyText = wait.until(EC.element_to_be_clickable((By.TAG_NAME, 'body')))
+        self.assertIn("successfully", bodyText.text)
 
     def testChangeBlogStatus(self):
         wait = WebDriverWait(self.driver, 40)
@@ -48,6 +50,8 @@ class BlogTest(unittest.TestCase):
             status_draft.click()
         blog_save = wait.until(EC.element_to_be_clickable((By.XPATH, '/ html / body / div[1] / div[4] / div / form / div / div / input[1]')));
         blog_save.click()
+        bodyText = wait.until(EC.element_to_be_clickable((By.TAG_NAME, 'body')))
+        self.assertIn("successfully", bodyText.text)
 
     def testModifyBlog(self):
         wait = WebDriverWait(self.driver, 40)
@@ -70,6 +74,8 @@ class BlogTest(unittest.TestCase):
         self.driver.switch_to.default_content()
         blog_save = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div[4]/div/form/div/div/input[1]')))
         blog_save.click()
+        bodyText = wait.until(EC.element_to_be_clickable((By.TAG_NAME, 'body')))
+        self.assertIn("successfully", bodyText.text)
 
     def testPublishingBlog(self):
         wait = WebDriverWait(self.driver, 40)
@@ -89,6 +95,8 @@ class BlogTest(unittest.TestCase):
         self.driver.switch_to.default_content()
         blog_save = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div[4]/div/form/div/div/input[1]')))
         blog_save.click()
+        bodyText = wait.until(EC.element_to_be_clickable((By.TAG_NAME, 'body')))
+        self.assertIn("successfully", bodyText.text)
 
     def testSavingBlogAsDraft(self):
         wait = WebDriverWait(self.driver, 40)
@@ -111,6 +119,8 @@ class BlogTest(unittest.TestCase):
         self.driver.switch_to.default_content()
         blog_save = wait.until(EC.element_to_be_clickable((By.XPATH, '/ html / body / div[1] / div[4] / div / form / div / div / input[1]')))
         blog_save.click()
+        bodyText = wait.until(EC.element_to_be_clickable((By.TAG_NAME, 'body')))
+        self.assertIn("successfully", bodyText.text)
 
     @classmethod
     def tearDown(self):
