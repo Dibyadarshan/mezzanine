@@ -23,7 +23,7 @@ class pageTest(unittest.TestCase):
         password_element.send_keys(password)
         password_element.send_keys(Keys.RETURN)
 
-    @unittest.skip("Delete")
+    # @unittest.skip("Delete")
     def testDeletepage(self):
         wait = WebDriverWait(self.driver, 10)
         pages = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div[3]/div[1]/ul/li[1]/ul/li[1]/a')))
@@ -38,7 +38,7 @@ class pageTest(unittest.TestCase):
         bodyText = wait.until(EC.element_to_be_clickable((By.TAG_NAME, 'body')))
         self.assertIn("successfully", bodyText.text)
 
-    @unittest.skip("Status")
+    # @unittest.skip("Status")
     def testChangepageStatus(self):
         wait = WebDriverWait(self.driver, 10)
         pages = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div[3]/div[1]/ul/li[1]/ul/li[1]/a')))
@@ -57,7 +57,7 @@ class pageTest(unittest.TestCase):
         bodyText = wait.until(EC.element_to_be_clickable((By.TAG_NAME, 'body')))
         self.assertIn("successfully", bodyText.text)
 
-    @unittest.skip("Modify")
+    # @unittest.skip("Modify")
     def testModifypage(self):
         wait = WebDriverWait(self.driver, 10)
         pages = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div[3]/div[1]/ul/li[1]/ul/li[1]/a')))
@@ -72,7 +72,7 @@ class pageTest(unittest.TestCase):
         page_title.send_keys(title)
         iframe = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="id_content_ifr"]')))
         self.driver.switch_to.frame(iframe)
-        page_content = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/p')))
+        page_content = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tinymce"]/div/div')))
         script = "arguments[0].insertAdjacentHTML('afterEnd', arguments[1])"
         self.driver.execute_script(script, page_content, content)
         self.driver.switch_to.default_content()
@@ -87,7 +87,7 @@ class pageTest(unittest.TestCase):
         pages = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div[3]/div[1]/ul/li[1]/ul/li[1]/a')))
         pages.click()
         select_element = wait.until(
-            EC.element_to_be_clickable((By.XPATH, '/ html / body / div / div[4] / div / div[1] / select')))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="addlist-primary"]/select')))
         select_element = Select(select_element);
         select_element.select_by_index(1);
         title = "Add Page"
@@ -111,7 +111,7 @@ class pageTest(unittest.TestCase):
         pages = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div[3]/div[1]/ul/li[1]/ul/li[1]/a')))
         pages.click()
         select_element = wait.until(
-            EC.element_to_be_clickable((By.XPATH, '/ html / body / div / div[4] / div / div[1] / select')))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="addlist-primary"]/select')))
         select_element = Select(select_element);
         select_element.select_by_index(1);
         title = "Add Page As Draft"

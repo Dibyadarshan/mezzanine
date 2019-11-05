@@ -52,36 +52,6 @@ class Comment_Sharing_RssTest(unittest.TestCase):
         reply_summit = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, reply_num+' > input:nth-child(13)')))
         reply_summit.click()
 
-    def testRSS(self):
-        wait = WebDriverWait(self.driver, 10)
-        driver = self.driver
-        rss_element = wait.until(
-            EC.element_to_be_clickable((By.XPATH, '//*[@id="body"]/div[3]/div/div[3]/div[2]/div/a[1]')))
-        rss_element.click()
-        self.assertEqual(driver.current_url, "http://127.0.0.1:8000/blog/feeds/rss/")
-
-    def testTwitter(self):
-        wait = WebDriverWait(self.driver, 10)
-        driver = self.driver
-        twitter_element = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, 'Share on Twitter')))
-        print(twitter_element)
-        twitter_element.click()
-        time.sleep(2)
-        window_after = driver.window_handles[1]
-        driver.switch_to.window(window_after)
-        self.assertEqual("twitter" in driver.current_url, True)
-
-    def testFacebook(self):
-        wait = WebDriverWait(self.driver, 10)
-        driver = self.driver
-        facebook_element = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, 'Share on Facebook')))
-        facebook_element.click()
-        time.sleep(2)
-        window_after = driver.window_handles[1]
-        driver.switch_to.window(window_after)
-        self.assertEqual("facebook" in driver.current_url, True)
-
-
     @classmethod
     def tearDown(self):
         self.driver.quit()
