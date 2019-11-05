@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
 if __name__== "__main__":
-    driver = webdriver.Chrome(executable_path="/home/dibyadarshan/Desktop/Github Repos/mezzanine/test/chromedriver")
+    driver = webdriver.Firefox(executable_path="/home/dibyadarshan/Desktop/Github Repos/mezzanine/test/geckodriver")
     driver.get("http://127.0.0.1:8000/admin/login/?next=/admin/")
     driver.maximize_window()
     wait = WebDriverWait(driver, 10)
@@ -25,7 +25,7 @@ if __name__== "__main__":
     folder_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="content-main"]/ul/li[1]/a')))
     folder_button.click()
     text_area = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="id_dir_name"]')))
-    text_area.send_keys('Testingfolder')
+    text_area.send_keys('Testing folder 2')
     text_area.send_keys(Keys.RETURN)
 
 
@@ -39,5 +39,15 @@ if __name__== "__main__":
     time.sleep(2)
     upload = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="upload-form"]/div/div/input')))
     upload.click()
+
+    media_element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="content"]/h1/span/a')))
+    media_element.click()
+
+    delete_element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="changelist"]/div[1]/div/div/table/tbody/tr[1]/td[6]/a')))
+    delete_element.click()
+
+    wait.until(EC.alert_is_present())
+    deletion = driver.switch_to.alert
+    deletion.accept()
 
     driver.quit()

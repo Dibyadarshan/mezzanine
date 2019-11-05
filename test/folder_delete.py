@@ -29,7 +29,7 @@ if __name__== "__main__":
     text_area.send_keys(Keys.RETURN)
 
 
-    folder_area = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="changelist"]/div[1]/div/div/table/tbody/tr[3]/td[2]/b/a')))
+    folder_area = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="changelist"]/div[1]/div/div/table/tbody/tr[1]/td[2]/b/a')))
     folder_area.click()
     upload_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="content-main"]/ul/li[2]/a')))
     upload_button.click()
@@ -43,9 +43,11 @@ if __name__== "__main__":
     media_element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="content"]/h1/span/a')))
     media_element.click()
 
-    delete_element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="changelist"]/div[1]/div/div/table/tbody/tr[3]/td[6]/a')))
+    delete_element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="changelist"]/div[1]/div/div/table/tbody/tr[1]/td[6]/a')))
     delete_element.click()
 
     wait.until(EC.alert_is_present())
     deletion = driver.switch_to.alert
     deletion.accept()
+
+    driver.quit()
